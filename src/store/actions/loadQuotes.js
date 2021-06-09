@@ -11,9 +11,18 @@ export const loadQuotes = () => {
                 method: 'GET',
             } )
             const data = await response.json()
-            console.log(data)
+            const quotesArr = Object.keys(data).map((key) => {
+                return {
+                    id: data[key].id,
+                    [key]: {
+                        last: data[key].last,
+                        highestBid: data[key].highestBid,
+                        percentChange: data[key].percentChange,
+                    }
+                }
+            })
 
-            return data
+            return quotesArr
         } catch (e) {
 
             console.log(e)

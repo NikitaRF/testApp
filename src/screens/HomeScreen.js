@@ -19,7 +19,4 @@ const styles = StyleSheet.create({
         justifyContent: 'center',
         alignItems: 'center',
     },
-    version: {
-        fontFamily: 'open-bold'
-    }
 })
