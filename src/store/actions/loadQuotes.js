@@ -9,7 +9,7 @@ export const loadQuotes = () => {
         try {
             const response = await fetch(`https://poloniex.com/public?command=returnTicker`,{
                 method: 'GET',
-            } )
+            })
             const data = await response.json()
             const quotesArr = Object.keys(data).map((key) => {
                 return {
@@ -21,17 +21,17 @@ export const loadQuotes = () => {
                     }
                 }
             })
-
-            return quotesArr
+            return {
+                quotesArr
+            }
         } catch (e) {
 
             console.log(e)
         }
     }
 
-
     return {
         type: LOAD_QUOTES,
-        payload: getQuotes()
+        payload: [{id: 1}]
     }
 }

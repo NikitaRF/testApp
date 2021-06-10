@@ -1,15 +1,9 @@
 import React, {useEffect} from "react";
-import { StyleSheet, Text, View, FlatList } from "react-native";
+import {StyleSheet, Text, View, FlatList, Button} from "react-native";
 import { useDispatch, useSelector } from "react-redux";
 import {loadQuotes} from "../store/actions/loadQuotes";
+import {Quote} from "../components/Quote";
 
-
-
-const Item = ({ id }) => (
-    <View>
-        <Text >{id}</Text>
-    </View>
-);
 
 
 export const QuotesScreen = () => {
@@ -21,20 +15,17 @@ export const QuotesScreen = () => {
     }, [dispatch])
 
     const allQuotes = useSelector(state => state.quotes.quotes)
-    console.log(allQuotes)
 
-
-    const renderItem = ({ item }) => <Item title={item.id} />;
 
     return (
-        <View style={styles.center}>
-            <Text>Котировки</Text>
+        <View style={styles.wrapper}>
             <Text>{1}</Text>
             <FlatList
                 data={allQuotes}
-                keyExtractor={(quotes) => quotes.id.toString()}
-                renderItem={renderItem}
+                keyExtractor={(Quotes) => Quotes.id.toString()}
+                renderItem={({item}) => <Quote Quote={item} /> }
             />
+
         </View>
     )
 
@@ -46,5 +37,8 @@ const styles = StyleSheet.create({
         flex: 1,
         justifyContent: 'center',
         alignItems: 'center',
+    },
+    wrapper: {
+        padding: 10,
     },
 })

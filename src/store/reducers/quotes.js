@@ -8,8 +8,6 @@ const initialState = {
 export const quotesReducer = (state = initialState, action) => {
     switch (action.type){
 
-        // если это действие, тогда мы берем стейт, разворавичавем его при помощи оператора spread,
-        // и заменяем в нем определенные поля
         case LOAD_QUOTES: return {
             quotes: action.payload,
         }
