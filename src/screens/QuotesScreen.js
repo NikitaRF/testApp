@@ -1,5 +1,5 @@
 import React, {useEffect} from "react";
-import {StyleSheet, Text, View, FlatList, Button} from "react-native";
+import {StyleSheet, Text, View, FlatList, Button, ScrollView} from "react-native";
 import { useDispatch, useSelector } from "react-redux";
 import {loadQuotes} from "../store/actions/loadQuotes";
 import {Quote} from "../components/Quote";
@@ -15,18 +15,18 @@ export const QuotesScreen = () => {
     }, [dispatch])
 
     const allQuotes = useSelector(state => state.quotes.quotes)
-
+    console.log("ALLQUOTES", allQuotes)
 
     return (
-        <View style={styles.wrapper}>
-            <Text>{1}</Text>
+        <ScrollView style={styles.wrapper}>
+
             <FlatList
                 data={allQuotes}
                 keyExtractor={(Quotes) => Quotes.id.toString()}
                 renderItem={({item}) => <Quote Quote={item} /> }
             />
 
-        </View>
+        </ScrollView>
     )
 
 }
