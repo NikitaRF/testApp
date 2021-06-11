@@ -13,7 +13,6 @@ export const getQuotes = async () => {
                 percentChange: data[key].percentChange,
             }
         })
-        //console.log("RRRRRRRRRRRRRRRRRRRRRR", quotesArr)
         return {
             quotesArr
         }
