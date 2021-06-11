@@ -8,6 +8,7 @@ export const loadQuotes = () => {
 
     return async dispatch => {
         const allQuotes = await getQuotes()
+        console.log(allQuotes)
 
         dispatch({
             type: LOAD_QUOTES,

@@ -1,25 +1,51 @@
-import React, {useEffect} from "react";
+import React, {useEffect, useState, useRef} from "react";
 import {StyleSheet, Text, View, FlatList, Button, ScrollView} from "react-native";
 import { useDispatch, useSelector } from "react-redux";
 import {loadQuotes} from "../store/actions/loadQuotes";
 import {Quote} from "../components/Quote";
-import {setScreenQuotes} from "../store/actions/setScreenQuotes";
+import {setIntervalId} from "../store/actions/setIntervalId";
 
 
-
-export const QuotesScreen = () => {
-
+export const QuotesScreen = ({navigation}) => {
+    // const [isInterval, setIsInterval] = useState()
     const dispatch = useDispatch()
+    // const dispatch2 = useDispatch()
 
-    useEffect(() => {
+
+    // useEffect(() => {
+    //     const timerId = setInterval(() => dispatch(loadQuotes()), 5000)
+    //     dispatch2(setIntervalId(timerId))
+    // }, [])
+
+
+    useEffect(
+        () => navigation.addListener('focus', () => dispatch(loadQuotes())),
+        []
+    )
+
+    useEffect(
+        () => navigation.addListener('focus', () => start()),
+        []
+    )
+
+    useEffect(
+        () => navigation.addListener('blur', () => stop()),
+        []
+    )
+
+    const start = () => {
         const timerId = setInterval(() => dispatch(loadQuotes()), 5000)
-    }, [dispatch])
-
-    const allQuotes = useSelector(state => state.quotes.quotes)
+    }
 
     const stop = () => {
-        clearInterval(timerId);
+        clearInterval(intervalId)
     }
+
+
+    const allQuotes = useSelector(state => state.quotes.quotes)
+    const intervalId = useSelector(state => state.quotes.intervalId)
+
+    console.log(intervalId)
 
 
     return (
