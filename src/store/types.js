@@ -1,1 +1,2 @@
 export const LOAD_QUOTES = 'LOAD_QUOTES'
+export const SET_SCREEN_QUOTES = 'SET_SCREEN_QUOTES'

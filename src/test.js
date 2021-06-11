@@ -7,14 +7,13 @@ export const getQuotes = async () => {
         const quotesArr = Object.keys(data).map((key) => {
             return {
                 id: data[key].id,
-                [key]: {
-                    last: data[key].last,
-                    highestBid: data[key].highestBid,
-                    percentChange: data[key].percentChange,
-                }
+                name: key,
+                last: data[key].last,
+                highestBid: data[key].highestBid,
+                percentChange: data[key].percentChange,
             }
         })
-        console.log("RRRRRRRRRRRRRRRRRRRRRR", quotesArr)
+        //console.log("RRRRRRRRRRRRRRRRRRRRRR", quotesArr)
         return {
             quotesArr
         }
