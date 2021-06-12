@@ -45,6 +45,7 @@ export const QuotesScreen = ({navigation}) => {
         <ScrollView style={styles.wrapper}>
 
             <FlatList
+                style={{marginTop: 50}}
                 data={allQuotes}
                 keyExtractor={(Quotes) => Quotes.id.toString()}
                 renderItem={({item}) => <Quote Quote={item} /> }
