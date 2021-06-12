@@ -1,8 +1,10 @@
-import {LOAD_QUOTES, SET_INTERVAL_ID} from "../types";
+import {LOAD_QUOTES, SET_INTERVAL_ID, SET_LOADING} from "../types";
+
 
 const initialState = {
     quotes: [],
-    intervalId: null
+    intervalId: null,
+    loading: true,
 }
 
 
@@ -12,10 +14,17 @@ export const quotesReducer = (state = initialState, action) => {
         case LOAD_QUOTES: return {
             ...state,
             quotes: action.payload,
+            loading: false
         }
 
         case SET_INTERVAL_ID: return {
-            intervalId: action.payload
+            intervalId: action.payload,
+            loading: false,
+        }
+
+        case SET_LOADING: return {
+            quotes: [],
+            loading: true,
         }
 
         default: return state

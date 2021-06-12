@@ -1,5 +1,5 @@
 import React from "react";
-import {ImageBackground, Text, TouchableOpacity, View, StyleSheet} from "react-native";
+import {Text, View, StyleSheet} from "react-native";
 
 export const Quote = ({Quote}) => {
     return (

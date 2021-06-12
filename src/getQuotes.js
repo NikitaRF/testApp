@@ -13,11 +13,20 @@ export const getQuotes = async () => {
                 percentChange: data[key].percentChange,
             }
         })
+
+        if (data.hasOwnProperty('error')) {
+            console.log("Что получили после запроса с сервера:", data)
+            return 'error'
+        }
+
         return {
             quotesArr
         }
+
     } catch (e) {
 
         console.log(e)
+        return []
+
     }
 }
