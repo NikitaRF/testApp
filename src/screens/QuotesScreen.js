@@ -25,21 +25,15 @@ export const QuotesScreen = ({navigation}) => {
 
     const allQuotes = useSelector(state => state.quotes.quotes)
 
-    if (allQuotes === 'error'  ) {
-        return (
-            <ScrollView style={styles.wrapper}>
 
+
+    if (allQuotes.hasOwnProperty('error')) {
+
+        return (
                 <View style={styles.dontLoadWrap}>
                     <Text style={styles.dontLoadText}>Что-то пошло не так, повторите позже</Text>
+                    <Text style={styles.dontLoadText}>Error: {allQuotes.error}</Text>
                 </View>
-
-                <FlatList
-                    data={allQuotes}
-                    keyExtractor={(Quotes) => Quotes.id.toString()}
-                    renderItem={({item}) => <Quote Quote={item} /> }
-                />
-
-            </ScrollView>
         )
     }
 

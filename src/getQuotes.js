@@ -16,7 +16,7 @@ export const getQuotes = async () => {
 
         if (data.hasOwnProperty('error')) {
             console.log("Что получили после запроса с сервера:", data)
-            return 'error'
+            return data
         }
 
         return {
@@ -24,9 +24,7 @@ export const getQuotes = async () => {
         }
 
     } catch (e) {
-
-        console.log(e)
-        return []
-
+        console.log('Ошибка в getQuoletes', e)
+        throw e
     }
 }

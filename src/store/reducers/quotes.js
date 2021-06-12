@@ -23,7 +23,7 @@ export const quotesReducer = (state = initialState, action) => {
         }
 
         case SET_LOADING: return {
-            quotes: [],
+            ...state,
             loading: true,
         }
 
