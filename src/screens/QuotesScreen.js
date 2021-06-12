@@ -25,6 +25,8 @@ export const QuotesScreen = ({navigation}) => {
     //     return () => clearInterval(timerId);
     // }, []);
 
+    useInterval(() => dispatch(loadQuotes()), 1000, navigation)
+
 
 
     useEffect(
@@ -57,18 +59,18 @@ export const QuotesScreen = ({navigation}) => {
 
 
 
-    useEffect(
-        () => {navigation.addListener('focus', () => start())
+    // useEffect(
+    //     () => {navigation.addListener('focus', () => start())
+    //
+    //     },
+    //     []
+    // )
 
-        },
-        []
-    )
 
-
-    const start = () => {
-        const timerId = setInterval(() => dispatch(loadQuotes()), 5000)
-        dispatchInterval(setIntervalId(timerId))
-    }
+    // const start = () => {
+    //     const timerId = setInterval(() => dispatch(loadQuotes()), 1000)
+    //     dispatchInterval(setIntervalId(timerId))
+    // }
     //
     // const stop = () => {
     //     console.log(isInterval)
