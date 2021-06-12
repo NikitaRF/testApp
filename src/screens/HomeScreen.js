@@ -1,10 +1,15 @@
 import React, {useEffect} from "react";
 import { StyleSheet, Text, View } from "react-native";
+import { useDispatch, useSelector } from "react-redux";
 
 
 
 
 export const HomeScreen = ({navigation}) => {
+
+    const intervalId = useSelector(state => state.quotes.intervalId)
+    console.log("intervalId", intervalId)
+    clearInterval(intervalId)
 
     return (
         <View style={styles.center}>
